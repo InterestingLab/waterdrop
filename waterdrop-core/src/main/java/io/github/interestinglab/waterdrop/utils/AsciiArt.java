@@ -2,6 +2,7 @@ package io.github.interestinglab.waterdrop.utils;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.io.File;
 
 public class AsciiArt {
 
@@ -9,7 +10,7 @@ public class AsciiArt {
      * Print ASCII art of string
      * @param str
      * */
-    public static void printAsciiArt(String str) {
+    public static void printAsciiArtOnFailure(String str) {
 
         final int width = 144;
         final int height = 32;
@@ -30,4 +31,19 @@ public class AsciiArt {
             System.out.println(sb);
         }
     }
+
+    public static void printAsciiArt(String str) throws Exception {
+        String name = System.getProperty("user.dir") + "/plugins/script/files/slant.flf";
+        File file = new File(name);
+        String asciiArt = FigletFont.convertOneLine(file, "Waterdrop");
+        System.out.println("Welcome to");
+        System.out.println(asciiArt);
+    }
+
+    public static void main(String[] args) throws Exception {
+        String name = System.getProperty("user.dir");
+        System.out.println("name = " + name);
+        printAsciiArtOnFailure("Waterdrop");
+    }
+
 }
